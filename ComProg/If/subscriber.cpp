@@ -5,7 +5,7 @@ using namespace std;
 int main(){
     long double subs;
     cin >> subs;
-    if(subs<=1000){
+    if(subs<1000){
         cout << subs;
     }else if(subs <1000000){
         subs /= 1000;
