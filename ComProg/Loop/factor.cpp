@@ -2,19 +2,17 @@
 using namespace std;
 
 int main(){
-    long num;
+    long num,m=2;
     cin >> num;
-    long divided=num;
-    for(long i=2;i<=num;i++){
-        while(divided%i==0){
-            divided = divided/i;
-            cout<<i;
-            if(divided!=1){
-                cout << "*";
-            }else{
-                break;
-            }
+    //long divided=num;
+    while(m*m<=num){
+        if(num%m==0){
+            cout<<m<<"*";
+            num = num/m;
+            m=2;
+        }else{
+            m++;
         }
-        
     }
+    cout << num;
 }

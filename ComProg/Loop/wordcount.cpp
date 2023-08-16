@@ -3,17 +3,21 @@ using namespace std;
 
 int main(){
     string search,text;
-    getline(cin,search);
     getline(cin,text);
+    getline(cin,search);
 
-    int n=0,count=0;
+    int searchlength = search.length(),textlength = text.length(),count=0;
     
-    while(n<text.length()){
-        if (text.find(search,n)!=string::npos){
-            n = text.find(search,n);
-            count++;
+    for(int i=0;i<searchlength;i++){
+        if(search.substr(i,textlength)==text){
+            if((i!=0)&&((search[i-1]>='A' &&(search[i-1]<='Z') || (search[i-1]>='a') && (search[i-1]<='z')))){
+                count=count;
+            }else if((i+textlength < searchlength)&&((search[i+textlength]>='A' &&(search[i+textlength]<='Z') || (search[i+textlength]>='a') && (search[i+textlength]<='z')))){
+                count=count;
+            }else{
+                count++;
+            }
         }
-        n++;
     }
     cout << count;
 }
