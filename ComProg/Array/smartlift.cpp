@@ -94,8 +94,13 @@ int main(){
         int min = task[0];
         int minlocation = 0;
         for(int i=0;i<n;i++){
-            //cout << task[i] << " ";
-            if(task[i]<min){
+            //cout << liftinfo[i][0] << " " << task[i] << endl;
+            if(task[i]==min){
+                if (liftinfo[i][0] < liftinfo[minlocation][0]){
+                    minlocation = i;
+                min=task[i];
+                }
+            }else if(task[i]<min){
                 //cout << task[n]<<"<"<<min<<endl;
                 minlocation = i;
                 min=task[i];
