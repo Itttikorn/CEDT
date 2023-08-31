@@ -105,7 +105,7 @@ int main(){
             if(bingo!=true){
                 cout << count << endl;
             }
-            cout << board[4].first << ", " << board[8].first << ", " << board[16].first << ", " << board[20].first << endl;
+            cout << board[20].first << ", " << board[16].first << ", " << board[8].first << ", " << board[4].first << endl;
             bingo=true;
         }
     }
