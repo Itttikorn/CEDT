@@ -1,40 +1,92 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-//NOT FINISHED
 int main(){
     string mode;
     cin >> mode;
-    int num;
     vector<int> numlist;
+    int num;
     while(cin >> num){
         numlist.push_back(num);
     }
-    vector<pair<int,vector<int>>> result;
 
-    int count=0;
+    //push first number;
     if(mode=="first"){
-        for(auto itr = numlist.begin(); itr!= numlist.end(); itr++){
-            if(count==0){
-                vector<int> insert = {*itr};
-                result.push_back(make_pair(*itr , insert));
-            }else{
-                for(int i=0;i<result.size();i++){
-                    pair<int,vector<int>> result2 = result[i];
-                    if(*itr + result2.first() <= 100){
-
+        vector<tuple<int,int,vector<int>>> result;
+        vector<int> first;
+        first.push_back(numlist[0]);
+        result.push_back(make_tuple(numlist[0],-1,first));
+        for(auto itr = numlist.begin()+1;itr!=numlist.end();itr++){
+            bool added=false;
+            //cout << *itr << endl;
+            for(int i = 0; i < result.size();i++){
+                //cout << *itr << "+" << result[i].first << "=" << *itr+result[i].first << endl;
+                if(*itr+get<0>(result[i])<=100){
+                    get<2>(result[i]).push_back(*itr);
+                    get<1>(result[i])=-(get<2>(result[i]).size());
+                    get<0>(result[i])+=*itr;
+                    added=true;
+                    break;
+                }
+            }
+            //not fit
+            if(added==false){
+                //cout << "new" << *itr << endl;
+                vector<int> newv;
+                newv.push_back(*itr);
+                result.push_back(make_tuple(*itr,-1,newv));
+            }
+        }
+        sort(result.begin(),result.end());
+        for(int i=result.size()-1;i>=0;i--){
+            sort(get<2>(result[i]).begin(),get<2>(result[i]).end());
+            for(auto itr = get<2>(result[i]).begin();itr!=get<2>(result[i]).end();itr++){
+                cout << *itr << " ";
+            }
+            cout << endl;
+        }
+    }else if(mode=="best"){
+        vector<tuple<int,int,int,vector<int>>> result;
+        vector<int> first;
+        first.push_back(numlist[0]);
+        result.push_back(make_tuple(numlist[0],-1,1,first));
+        for(auto itr = numlist.begin()+1;itr!=numlist.end();itr++){
+            int best=100;
+            int bestlocation=0;
+            bool added=false;
+            for(int i=0;i<result.size();i++){
+                //run through all list
+                //cout << *itr << "+" << get<0>(result[i]) << "=" << *itr+get<0>(result[i]) << endl;
+                if(*itr+get<0>(result[i]) <= 100){
+                    if(100 - (*itr+get<0>(result[i])) < best){
+                        best=100-(*itr+get<0>(result[i]));
+                        bestlocation = i;
                     }
                 }
             }
-            count++;
+            //cout << "Best" << best << endl;
+            if(best==100){
+                //cout << "new" << *itr << endl;
+                vector<int> newv;
+                newv.push_back(*itr);
+                result.push_back(make_tuple(*itr,-1,1,newv));
+            }else{
+                get<3>(result[bestlocation]).push_back(*itr);
+                get<1>(result[bestlocation])=-(get<3>(result[bestlocation]).size());
+                get<0>(result[bestlocation])+=*itr;
+                added=true;
+            }
         }
-    }
-    for(auto itr=result.begin();itr!=result.end();itr++){
-        pair<int,vector<int>> pairofresult = *itr;
-        vector<int> v = pairofresult.second;
-        for(auto itr2 = v.begin();itr2!=v.end();itr2++){
-            cout << *itr2 << " ";
+        for(int i=0;i<result.size();i++){
+            sort(get<3>(result[i]).begin(),get<3>(result[i]).end());
+            get<2>(result[i])=-get<3>(result[i])[0];
         }
-        cout << endl;
+        sort(result.begin(),result.end());
+        for(int i=result.size()-1;i>=0;i--){
+            for(auto itr = get<3>(result[i]).begin();itr!=get<3>(result[i]).end();itr++){
+                cout << *itr << " ";
+            }
+            cout << endl;
+        }
     }
 }
