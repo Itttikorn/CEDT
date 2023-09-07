@@ -1,7 +1,7 @@
 .gitignore
-.vscode\launch.json
-.vscode\settings.json
-.vscode\tasks.json
+.vscode/launch.json
+.vscode/settings.json
+.vscode/tasks.json
 Foundation/Activity_1_Resources/Activity_1_2023-1_Part_1.docx
 Foundation/Activity_1_Resources/Activity_1_2023-1_Part_1.pdf
 Foundation/Activity_1_Resources/Activity_1_2023-1_Part_2_Final.pdf
