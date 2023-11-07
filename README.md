@@ -1,2 +1,0 @@
-# CEDT
-ComProg Code 💀💀💀
