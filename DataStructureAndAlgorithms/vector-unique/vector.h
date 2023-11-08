@@ -173,7 +173,7 @@ class vector
     }
 
 
-    void insert(iterator position,iterator first,iterator last);
+    void uniq();
 
 };
 
