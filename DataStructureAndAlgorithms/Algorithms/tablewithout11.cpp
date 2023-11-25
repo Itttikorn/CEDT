@@ -2,12 +2,15 @@
 using namespace std;
 
 int main(){
-    //not finished
-    int n;
+    long long n;
     cin >> n;
-    long long m = pow(pow(2,n),2);
-    cout << m << endl;
-    m-=(m*0.25);
-    m-=2*pow(2,n);
-    cout << m;
+    vector<long long> allzero(n+1),someone(n+1);
+    allzero[1] = 1;
+    someone[1] = 2;
+    for(long long i=2;i<=n;i++){
+        allzero[i] = (allzero[i-1]+someone[i-1])%100000007;
+        someone[i] = (2*allzero[i-1]+someone[i-1])%100000007;
+    }
+    cout << (allzero[n] + someone[n])%100000007;
+    return 0;
 }
