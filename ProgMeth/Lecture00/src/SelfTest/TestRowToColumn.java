@@ -1,12 +1,13 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import SelfTest.RowToColumn;
 import org.junit.jupiter.api.Test;
 
 class TestRowToColumn {
 
 	@Test
 	void testRowToColumn01() {
-		int[][] a = {{1,2,3},{5,6,7},{9,10,11}};
+		int[][] a = {{1, 2, 3}, {5, 6, 7}, {9, 10, 11}};
 		int[][] b = RowToColumn.rowToColumn(a);
 		assertEquals(1,b[0][0]);
 		assertEquals(5,b[0][1]);

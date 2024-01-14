@@ -1,3 +1,4 @@
+package Section02;
 
 public class StringCombine {
 

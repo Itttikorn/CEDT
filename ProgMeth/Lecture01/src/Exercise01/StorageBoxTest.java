@@ -1,9 +1,8 @@
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+package Exercise01;
 
 import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.*;
 
 class StorageBoxTest {
 
@@ -51,7 +50,19 @@ class StorageBoxTest {
 
 	@Test
 	void testPopAndTop() {
-
+		StorageBox a = new StorageBox();
+		Object[] xs = new Object[7];
+		for (int i = 0; i < xs.length; i++) {
+			xs[i] = new Integer(i);
+		}
+		for (int i = 0; i < xs.length; i++) {
+			a.push(xs[i]);
+			assertEquals(xs[i], a.top());
+		}
+		for (int i = xs.length - 1; i >= 0; i--) {
+			assertEquals(xs[i], a.top());
+			a.pop();
+		}
 	}
 
 }

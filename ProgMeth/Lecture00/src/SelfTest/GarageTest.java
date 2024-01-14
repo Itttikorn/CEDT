@@ -1,5 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import SelfTest.Car;
+import SelfTest.Garage;
 import org.junit.jupiter.api.Test;
 
 class GarageTest {

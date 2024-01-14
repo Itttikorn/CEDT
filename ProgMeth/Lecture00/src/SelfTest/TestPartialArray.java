@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import SelfTest.partialArray;
 import org.junit.jupiter.api.Test;
 
 class TestPartialArray {

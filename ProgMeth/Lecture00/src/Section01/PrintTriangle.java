@@ -1,4 +1,4 @@
-package Section00;
+package Section01;
 
 public class PrintTriangle {
 

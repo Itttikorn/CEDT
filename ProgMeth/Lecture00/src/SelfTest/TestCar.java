@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import SelfTest.Car;
 import org.junit.jupiter.api.Test;
 
 class TestCar {

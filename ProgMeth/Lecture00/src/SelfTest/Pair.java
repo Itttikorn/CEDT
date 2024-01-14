@@ -1,2 +1,6 @@
-package SelfTest;public class Pair {
+package SelfTest;
+
+public class Pair {
+    String x;
+    String y;
 }

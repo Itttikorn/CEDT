@@ -5,9 +5,9 @@ public class TypeConversionDemo2 {
 		int i, j, k;
 		double d1 = 0.5, d2 = 0.5, d3, d4;
 
-		i = d1 + 8.735f;
-		j = d1 + d2;    // cast the result 
-		k= d1 + d2; // cast each one
+		i = (int) (d1 + 8.735f);
+		j = (int) (d1 + d2);    // cast the result
+		k= (int) (d1 + d2); // cast each one
 		System.out.println("i = " + i);
 		System.out.println("j = " + j);
 		System.out.println("k = " + k);
