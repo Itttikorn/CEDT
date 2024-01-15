@@ -36,10 +36,19 @@ public class Main {
                 System.out.println("------------------------------------------------------");
                 System.out.println("<0> Exit");
                 System.out.println("======================================================");
-                int option = scan.nextInt();
-                while (option < 0 || option > 16) {
+                int option;
+                while (true) {
+                    try {
+                        option = scan.nextInt();
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Invalid option, please type your option again.");
+                        scan.next();
+                    }
+                }
+                if (option < 0 || option > 16) {
                     System.out.println("Invalid option, please type your option again.");
-                    option = scan.nextInt();
+                    continue;
                 }
                 if (option == 0) {
                     GameController.getInstance().gameEnd = true;
