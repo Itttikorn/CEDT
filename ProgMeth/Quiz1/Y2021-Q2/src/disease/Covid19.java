@@ -35,8 +35,8 @@ public class Covid19 extends Hypopnea {
 
     public int minimumInfectionSpread(int n) {
         int infected = 0;
-        for(int i=1;i<=n;i++){
-            infected+= (int) Math.pow(getReproductionNumber().getMin(),i);
+        for (int i = 1; i <= n; i++) {
+            infected += (int) Math.pow(getReproductionNumber().getMin(), i);
         }
         return infected;
     }

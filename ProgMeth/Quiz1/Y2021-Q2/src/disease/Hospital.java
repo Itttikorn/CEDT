@@ -6,7 +6,7 @@ import util.SevereLevel;
 import java.util.ArrayList;
 
 public class Hospital {
-    private ArrayList<Patient> patients;
+    private final ArrayList<Patient> patients;
 
     public Hospital() {
         patients = new ArrayList<>();
