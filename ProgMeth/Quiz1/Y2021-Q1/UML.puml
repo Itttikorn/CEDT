@@ -1,0 +1,57 @@
+@startuml
+class logic.Channel {
+- String name
+- ArrayList<Message> messageList
++ <<Create>> Channel(String)
++ void addMessage(Message)
++ int getMessageCount()
++ String getName()
++ void setName(String)
++ ArrayList<Message> getMessageList()
+}
+class logic.Message {
+- String text
+- User sender
++ <<Create>> Message(String,User)
++ String getText()
++ void setText(String)
++ User getSender()
++ void setSender(User)
+}
+class logic.User {
+- String name
+- String status
+- ArrayList<Server> joinedServersList
++ <<Create>> User(String)
++ boolean equals(Object)
++ void addJoinedServersList(Server)
++ void setStatus(String)
++ void setName(String)
++ String getName()
++ String getStatus()
++ ArrayList<Server> getJoinedServersList()
+}
+class logic.Server {
+- String name
+- User owner
+- ArrayList<Channel> channelList
+- ArrayList<User> memberList
++ <<Create>> Server(String,User,TemplateType)
++ String getName()
++ void setName(String)
++ User getOwner()
++ void setOwner(User)
++ ArrayList<Channel> getChannelList()
++ void setChannelList(ArrayList<Channel>)
++ ArrayList<User> getMemberList()
++ void setMemberList(ArrayList<User>)
++ Channel addChannel(User,String)
++ User addUser(User)
++ boolean kickUser(User,User)
+}
+enum logic.TemplateType {
++  BASIC
++  GAMING
++  STUDY
+}
+@enduml

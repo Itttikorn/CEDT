@@ -1,0 +1,31 @@
+@startuml
+class logic.EnterProfile {
+- Person person
+- int bodyTemperature
++ <<Create>> EnterProfile(Person,int)
++ Person getPerson()
++ int getBodyTemperature()
++ void setBodyTemperature(int)
++ boolean hasFever()
+}
+class logic.Person {
+- String name
+- int ID
++ <<Create>> Person(String,int)
++ String getName()
++ void setName(String)
++ int getID()
++ void setID(int)
+}
+class logic.Building {
+- ArrayList<EnterProfile> enterProfileList
+- int populationCount
+- int potentialInfectedCount
++ <<Create>> Building()
++ EnterProfile addProfile(Person,int)
++ EnterProfile removeProfile(int)
++ int getPopulationCount()
++ int getPotentialInfectedCount()
++ ArrayList<EnterProfile> getEnterProfileList()
+}
+@enduml

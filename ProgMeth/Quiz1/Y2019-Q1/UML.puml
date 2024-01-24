@@ -1,0 +1,30 @@
+@startuml
+class logic.OrderItem {
+- Item item
+- int itemAmount
++ Item getItem()
++ int getItemAmount()
++ void setItemAmount(int)
++ void increaseItemAmount(int)
++ int calculateTotalPrice()
+}
+class logic.Order {
+- ArrayList<OrderItem> orderItemList
+- {static} int totalOrderCount
+- int orderNumber
++ OrderItem addItem(Item,int)
++ int calculateOrderTotalPrice()
++ {static} int getTotalOrderCount()
++ {static} void resetTotalOrderCount()
++ int getOrderNumber()
++ ArrayList<OrderItem> getOrderItemList()
+}
+class logic.Item {
+- String name
+- int pricePerPiece
++ String getName()
++ void setName(String)
++ int getPricePerPiece()
++ void setPricePerPiece(int)
+}
+@enduml

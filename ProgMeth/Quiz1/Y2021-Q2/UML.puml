@@ -1,0 +1,43 @@
+@startuml
+class disease.Hospital {
+- ArrayList<Patient> patients
++ <<Create>> Hospital()
++ ArrayList<Patient> getPatients()
++ void admit(String,String,String,String,boolean)
++ ArrayList<Patient> getCovidPatients(SevereLevel)
+}
+class disease.Hypopnea {
+# SevereLevel severeLevel(boolean)
++ String toString()
+}
+class disease.Covid19 {
+- R0 reproductionNumber
+- String countryOfFirstAppearance
++ <<Create>> Covid19()
++ R0 getReproductionNumber()
++ void setReproductionNumber(R0)
++ String getCountryOfFirstAppearance()
++ void setCountryOfFirstAppearance(String)
++ SevereLevel severeLevel(boolean)
++ int minimumInfectionSpread(int)
++ String toString()
+}
+abstract class disease.Disease {
++ SevereLevel getSevereLevel(boolean)
+# {abstract}SevereLevel severeLevel(boolean)
+}
+class disease.Delta {
+- int spikeProtein
++ <<Create>> Delta()
++ int getSpikeProtein()
++ void setSpikeProtein(int)
++ SevereLevel severeLevel(boolean)
++ int minimumInfectionSpread(int)
++ String toString()
+}
+
+
+disease.Disease <|-- disease.Hypopnea
+disease.Hypopnea <|-- disease.Covid19
+disease.Covid19 <|-- disease.Delta
+@enduml

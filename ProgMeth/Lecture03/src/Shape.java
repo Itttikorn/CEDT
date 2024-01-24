@@ -1,4 +1,4 @@
-public abstract class Shape1 {
+public abstract class Shape {
     private String name;
 
     abstract double getArea();

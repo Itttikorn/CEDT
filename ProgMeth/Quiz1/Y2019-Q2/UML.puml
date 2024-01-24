@@ -1,0 +1,79 @@
+@startuml
+class logic.rocks.NormalRock {
+# int damage
++ <<Create>> NormalRock(int)
++ int getDamage()
++ void setDamage(int)
++ int dealDamage(Zombie)
++ String toString()
+}
+class logic.game.GameManager {
++ {static} Player player
++ {static} ArrayList<Zombie> zombies
++ {static} NormalRock currentRock
++ {static} NormalRock nextRock
++ {static} void initializeManager(Player)
++ {static} int attackZombie(Zombie)
++ {static} int takeTurn(Zombie)
++ {static} Zombie getRandomLivingZombie()
++ {static} void randomizeAllZombies()
++ {static} boolean allZombiesDead()
++ {static} void printAllZombies()
++ {static} int getRandomNumberInRange(int,int)
+}
+class logic.game.GameInterface {
+~ {static} int startingHealth
++ {static} void main(String[])
+}
+class logic.rocks.RockManager {
++ {static} String randomRockType()
++ {static} NormalRock randomRock()
++ {static} PoisonRock randomPoison()
+}
+class logic.game.Player {
+- int health
+- int maxHealth
++ <<Create>> Player(int)
++ int getHealth()
++ void setHealth(int)
++ int getMaxHealth()
++ void setMaxHealth(int)
++ String toString()
+}
+class logic.zombies.ZombieManager {
++ {static} Zombie randomZombie()
+}
+class logic.zombies.Zombie {
+~ int health
+~ int maxHealth
+~ int power
+~ int defense
+~ int decay
++ <<Create>> Zombie(int,int,int)
++ void setMaxHealth(int)
++ int getMaxHealth()
++ void setHealth(int)
++ int getHealth()
++ void setDecay(int)
++ int getDecay()
++ void setDefense(int)
++ int getDefense()
++ void setPower(int)
++ int getPower()
++ int dealDamage(Player)
++ int doAction()
++ void decay()
++ String toString()
+}
+class logic.rocks.PoisonRock {
+- int damageOverTime
++ <<Create>> PoisonRock(int,int)
++ int getDamageOverTime()
++ void setDamageOverTime(int)
++ int dealDamage(Zombie)
++ String toString()
+}
+
+
+logic.rocks.NormalRock <|-- logic.rocks.PoisonRock
+@enduml

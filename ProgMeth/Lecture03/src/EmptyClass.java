@@ -1,2 +1,6 @@
-package PACKAGE_NAME;public class EmptyClass {
+public class EmptyClass {
+    @Override
+    public String toString() {
+        return "EmptyClass";
+    }
 }
