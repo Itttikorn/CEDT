@@ -1,0 +1,58 @@
+@startuml
+class logic.ghost.PongGhost {
+- int power
++ int getLevel()
++ void attack()
++ void damage()
++ String toString()
+}
+class logic.ghost.PooYaGhost {
+- int power
++ int getLevel()
++ String toString()
++ void attack()
++ void damage()
+}
+abstract class logic.ghost.Ghost {
+- int hp
++ boolean isDestroyed()
++ void decreaseHp(int)
++ {abstract}int getLevel()
++ {abstract}void attack()
++ int getHp()
+}
+class logic.ghost.PryGhost {
+- int power
+- int ppt
++ String toString()
++ void attack()
++ int getPpt()
++ void setPpt(int)
+}
+abstract class logic.ghost.LowGhost {
++ int getLevel()
+}
+abstract class logic.ghost.HighGhost {
++ {abstract}void damage()
+}
+class logic.ghost.GaGhost {
+- int energy
++ void attack()
++ String toString()
+}
+class logic.ghost.MaBongGhost {
+- int power
+- int speed
++ String toString()
++ void attack()
+}
+
+
+logic.ghost.HighGhost <|-- logic.ghost.PongGhost
+logic.ghost.HighGhost <|-- logic.ghost.PooYaGhost
+logic.ghost.LowGhost <|-- logic.ghost.PryGhost
+logic.ghost.Ghost <|-- logic.ghost.LowGhost
+logic.ghost.Ghost <|-- logic.ghost.HighGhost
+logic.ghost.LowGhost <|-- logic.ghost.GaGhost
+logic.ghost.LowGhost <|-- logic.ghost.MaBongGhost
+@enduml
