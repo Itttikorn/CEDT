@@ -77,9 +77,13 @@ CREATE TABLE Admin (
 );
 
 CREATE TABLE loggedin (
+    logId SERIAL,
     userID INTEGER NOT NULL,
     email VARCHAR(255),
-    logintime TIMESTAMP
+    logType VARCHAR(6),
+    loggedtime TIMESTAMP,
+    PRIMARY KEY (logId),
+    FOREIGN KEY (userId) REFERENCES UserName(userId)
 );
 
 -- Sample Data
@@ -200,7 +204,7 @@ BEGIN
         RETURN FALSE;
     ELSE
         IF realpasscode = passcodee THEN
-            INSERT INTO loggedin VALUES (realuserID, emaill, now());
+            INSERT INTO loggedin VALUES (DEFAULT, realuserID, emaill,'login', now());
             RETURN TRUE;
         ELSE
             RETURN FALSE;
@@ -216,8 +220,14 @@ CREATE OR REPLACE PROCEDURE log_out(
     LANGUAGE plpgsql
     AS
 $$
+DECLARE
+    realuserID INTEGER;
 BEGIN
-    DELETE FROM loggedin where loggedin.email = emaill;
+    SELECT u.userID
+    INTO realuserID
+    FROM UserName u
+    WHERE u.email = emaill;
+    INSERT INTO loggedin VALUES (DEFAULT, realuserID, emaill,'logout', now());
     COMMIT;
 END;
 $$
