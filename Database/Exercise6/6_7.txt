@@ -1,0 +1,52 @@
+db.orders_w_lines.aggregate([
+  {
+    $unwind: "$order_lines",
+  },
+  {
+    $group: {
+      _id: "$order_lines.product_id",
+      count: {
+        $sum: "$order_lines.ordered_quantity",
+      },
+    },
+  },
+  {
+    $group: {
+      _id: "$count",
+      product_ids: {
+        $push: "$_id",
+      },
+    },
+  },
+  {
+    $sort: {
+      _id: -1,
+    },
+  },
+  {
+    $limit: 1,
+  },
+  {
+    $unwind: "$product_ids",
+  },
+  {
+    $lookup: {
+      from: "product",
+      localField: "product_ids",
+      foreignField: "product_id",
+      as: "product_info",
+    },
+  },
+  {
+    $unwind: "$product_info",
+  },
+  {
+    $project: {
+      _id: 0,
+      product_id: "$product_ids",
+      product_description:
+        "$product_info.product_name",
+      count: "$count",
+    },
+  },
+])

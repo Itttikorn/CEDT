@@ -1,0 +1,73 @@
+@startuml
+enum logic.card.Element {
++  FIRE
++  WATER
++  EARTH
++  ICE
+}
+class logic.card.MageCard {
+- Element mageType
++ <<Create>> MageCard(String,int,int,Element)
++ Element getMageType()
++ void setMageType(Element)
++ void play(Player)
++ boolean canPlay(Player)
+}
+abstract class logic.card.BaseCard {
+- String name
+- int power
+- int health
++ <<Create>> BaseCard(String,int,int)
++ {abstract}void play(Player)
++ {abstract}boolean canPlay(Player)
++ String getName()
++ void setName(String)
++ int getPower()
++ void setPower(int)
++ int getHealth()
++ void setHealth(int)
++ int attack(BaseCard)
+}
+class logic.card.OrbCard {
+- Element orbType
++ <<Create>> OrbCard(String,int,int,Element)
++ void play(Player)
++ boolean canPlay(Player)
++ Element getOrbType()
++ void setOrbType(Element)
+}
+class logic.player.Player {
+- int damage
+- ArrayList<BaseCard> deck
+- ArrayList<BaseCard> hand
+- ArrayList<BaseCard> field
+- int energy
++ <<Create>> Player()
++ <<Create>> Player(ArrayList<BaseCard>)
++ boolean playCard(int,int)
++ void drawCard()
++ int getDamage()
++ void setDamage(int)
++ ArrayList<BaseCard> getDeck()
++ void setDeck(ArrayList<BaseCard>)
++ ArrayList<BaseCard> getHand()
++ void setHand(ArrayList<BaseCard>)
++ ArrayList<BaseCard> getField()
++ void setField(ArrayList<BaseCard>)
++ int getEnergy()
++ void setEnergy(int)
+}
+class logic.card.RobotCard {
+- int energyCost
++ <<Create>> RobotCard(String,int,int,int)
++ int getEnergyCost()
++ void setEnergyCost(int)
++ void play(Player)
++ boolean canPlay(Player)
+}
+
+
+logic.card.BaseCard <|-- logic.card.MageCard
+logic.card.BaseCard <|-- logic.card.OrbCard
+logic.card.BaseCard <|-- logic.card.RobotCard
+@enduml

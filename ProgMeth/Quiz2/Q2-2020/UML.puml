@@ -1,0 +1,56 @@
+@startuml
+interface discount.FreeDiscountable {
++ {abstract}int calcFreeDiscountPieces(int)
+}
+class products.FreeDiscountProduct {
+- int promoQuantity
+- int freeQuantity
++ <<Create>> FreeDiscountProduct(String,int,int,int)
++ int getPromoQuantity()
++ void setPromoQuantity(int)
++ int getFreeQuantity()
++ void setFreeQuantity(int)
++ int calculateDiscount(int)
++ String toString()
++ int calcFreeDiscountPieces(int)
+}
+interface discount.Sellable {
++ {abstract}int calculateDiscount(int)
++ {abstract}void setProductName(String)
++ {abstract}String getProductName()
++ {abstract}void setPrice(int)
++ {abstract}int getPrice()
+}
+interface discount.PercentDiscountable {
++ {abstract}int calcDiscountPerPiece()
+}
+class products.PercentDiscountProduct {
+- double percent
++ <<Create>> PercentDiscountProduct(String,int,double)
++ double getPercent()
++ void setPercent(double)
++ int calcDiscountPerPiece()
++ int calculateDiscount(int)
++ String toString()
+}
+class products.BaseProduct {
+# String productName
+# int price
++ <<Create>> BaseProduct(String,int)
++ String getProductName()
++ void setProductName(String)
++ int getPrice()
++ void setPrice(int)
++ int calculateDiscount(int)
++ String toString()
+}
+
+
+discount.Sellable <|-- discount.FreeDiscountable
+discount.FreeDiscountable <|.. products.FreeDiscountProduct
+products.BaseProduct <|-- products.FreeDiscountProduct
+discount.Sellable <|-- discount.PercentDiscountable
+discount.PercentDiscountable <|.. products.PercentDiscountProduct
+products.BaseProduct <|-- products.PercentDiscountProduct
+discount.Sellable <|.. products.BaseProduct
+@enduml

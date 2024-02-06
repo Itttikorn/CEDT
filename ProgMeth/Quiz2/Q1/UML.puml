@@ -1,0 +1,71 @@
+@startuml
+class logic.PositionList {
++ <<Create>> PositionList()
++ void add(int,int)
+}
+abstract class logic.Piece {
+# boolean reverse
+# String name
+# PositionList movePositions
+# Position currentPosition
++ <<Create>> Piece(int,int,boolean,String)
++ {abstract}void move(int)
++ {abstract}Position attackTargetPosition(int)
++ String getName()
++ void setName(String)
++ boolean isReverse()
++ void setReverse(boolean)
++ void setCurrentPosition(Position)
++ Position getCurrentPosition()
++ void setCurrentPosition(int,int)
++ ArrayList<Position> getMovePositions()
+}
+class logic.GameSystem {
+- ArrayList<Piece> allWhitePieces
+- ArrayList<Piece> allRedPieces
+- boolean gameEnd
++ <<Create>> GameSystem()
++ boolean isGameEnd()
++ void setGameEnd(boolean)
++ ArrayList<Piece> getAllWhitePieces()
++ ArrayList<Piece> getAllRedPieces()
++ void printBoardStatus()
++ boolean removeOtherPieces(Piece,Position)
++ void action(Piece,boolean,int)
+}
+class logic.Fighter {
+- boolean promoted
+- PositionList promotedMovePositions
++ <<Create>> Fighter(int,int,boolean,String)
++ boolean isPromoted()
++ void setPromoted(boolean)
++ PositionList getPromotedMovePositions()
++ void move(int)
++ Position attackTargetPosition(int)
+}
+class logic.Position {
+- int x
+- int y
++ <<Create>> Position(int,int)
++ int getX()
++ void setX(int)
++ int getY()
++ void setY(int)
++ boolean equal(Position)
++ Position addPositionValue(Position)
++ void reverse()
++ void normalizedPosition()
+}
+class logic.MotherShip {
+- PositionList attackPositions
++ <<Create>> MotherShip(int,int,boolean,String)
++ Position attackTargetPosition(int)
++ void move(int)
++ ArrayList<Position> getAttackPosition()
+}
+
+
+java.util.ArrayList <|-- logic.PositionList
+logic.Piece <|-- logic.Fighter
+logic.Piece <|-- logic.MotherShip
+@enduml

@@ -1,0 +1,37 @@
+db.orders_w_lines.aggregate([
+  {
+    $group: {
+      _id: "$customer_id",
+      customer_name: {
+        $first: "$customer_name",
+      },
+      order_count: {
+        $sum: 1,
+      },
+    },
+  },
+  {
+    $lookup: {
+      from: "customer",
+      localField: "_id",
+      foreignField: "customer_id",
+      as: "customer_info",
+    },
+  },
+  {
+    $unwind: "$customer_info"
+  },
+  {
+    $project: {
+      _id: 0,
+      customer_id: "$_id",
+      customer_name: "$customer_info.customer_name",
+      order_count: "$order_count",
+    },
+  },
+  {
+    $sort: {
+      order_count: -1,
+    },
+  },
+])
