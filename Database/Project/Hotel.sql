@@ -369,7 +369,7 @@ END;
 $$
 
 --Test Functions
-CALL edit_hotel_bookings(1::INTEGER, 2::INTEGER, '2024-03-01'::DATE, '2024-03-10'::DATE, NOW()::TIMESTAMP, 2::INTEGER, 1::INTEGER);
+CALL edit_hotel_bookings(1::INTEGER, 2::VARCHAR, '2024-03-01'::DATE, '2024-03-10'::DATE, NOW()::TIMESTAMP, 2::INTEGER, 1::INTEGER);
 SELECT * FROM booking
 
 
@@ -465,7 +465,7 @@ END;
 $$
 
 --Test Functions
-CALL admin_edit_booking(2::INTEGER, 2::INTEGER, '2024-03-01'::DATE, '2024-03-10'::DATE, NOW()::TIMESTAMP, 4::INTEGER, 2::INTEGER);
+CALL admin_edit_booking(2::INTEGER, 2::VARCHAR, '2024-03-01'::DATE, '2024-03-10'::DATE, NOW()::TIMESTAMP, 4::INTEGER, 2::INTEGER);
 SELECT * FROM booking
 
 -- 9. The system shall allow the admin to delete any hotel bookings

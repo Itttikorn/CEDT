@@ -1,0 +1,7 @@
+"userid","firstname","lastname","email","passcode","telephonenumber"
+1,"John","Doe","john.doe@example.com","password123","1234567890"
+2,"Jane","Smith","jane.smith@example.com","pass123","9876543210"
+3,"Michael","Johnson","michael.j@example.com","mikepass","5554443333"
+4,"Emily","Davis","emily.d@example.com","emilypass","1112223333"
+5,"Daniel","Brown","daniel.b@example.com","danpass","9998887777"
+6,"John","Doe","alice.j@example.com","password123","1234567890"
