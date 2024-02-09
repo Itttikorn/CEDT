@@ -25,3 +25,4 @@ WHERE customer_name = 'Alan';
 SELECT * FROM address_audit_log;
 
 SELECT * FROM customer;
+
