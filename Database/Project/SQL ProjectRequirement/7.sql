@@ -27,7 +27,7 @@ END IF;
 
 RETURN QUERY
 SELECT DISTINCT B.bookingID, U.firstname, U.lastname, B.bookingStatus, B.startDate, B.endDate, R.typeName
-FROM Booking B, UserName U, Room R
+FROM Booking B, users U, Room R
 WHERE B.userID = U.userID and B.hotelID = userhotelID and B.roomID = R.roomID;
 
 

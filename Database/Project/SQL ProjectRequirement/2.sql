@@ -14,7 +14,7 @@ DECLARE
 BEGIN
     SELECT u.passcode, u.userID
     INTO realpasscode,realuserID
-    FROM UserName u
+    FROM users u
     WHERE u.email = emaill;
     
     IF NOT FOUND THEN 
@@ -42,7 +42,7 @@ DECLARE
 BEGIN
     SELECT u.userID
     INTO realuserID
-    FROM UserName u
+    FROM users u
     WHERE u.email = emaill;
     INSERT INTO loggedin VALUES (DEFAULT, realuserID, emaill,'logout', now());
     COMMIT;

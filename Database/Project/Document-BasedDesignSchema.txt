@@ -1,0 +1,111 @@
+{
+  "users": {
+    "properties": {
+      "_id": { "bsonType": "objectId" },
+      "firstName": { "bsonType": "string" },
+      "lastName": { "bsonType": "string" },
+      "email": { "bsonType": "string", "unique": true },
+      "passcode": { "bsonType": "string" },
+      "telephoneNumber": { "bsonType": "string", "pattern": "/^[0-9]{10}$/" }
+    },
+    "required": ["_id", "firstName", "lastName", "email", "passcode", "telephoneNumber"]
+  },
+
+  "Hotel": {
+    "properties": {
+      "_id": { "bsonType": "objectId" },
+      "name": { "bsonType": "string" },
+      "telephoneNumber": { "bsonType": "string", "pattern": "/^[0-9]{10}$/" },
+      "email": { "bsonType": "string" },
+      "buildingNo": { "bsonType": "string" },
+      "street": { "bsonType": "string" },
+      "subDistrictName": { "bsonType": "string" },
+      "districtName": { "bsonType": "string" },
+      "province": { "bsonType": "string" },
+      "postalCode": { "bsonType": "string", "pattern": "/^[0-9]{5}$/" }
+    },
+    "required": ["_id", "name", "telephoneNumber", "buildingNo", "subDistrictName", "districtName", "province", "postalCode"]
+  },
+
+  "RoomType": {
+    "properties": {
+      "typeName": { "bsonType": "string" },
+      "maxOccupant": { "bsonType": "int" },
+      "amenities": { "bsonType": "string" },
+      "price": { "bsonType": "int" }
+    },
+    "required": ["typeName", "maxOccupant", "amenities", "price"]
+  },
+
+  "Room": {
+    "properties": {
+      "hotelId": { "bsonType": "objectId" },
+      "roomId": { "bsonType": "objectId" },
+      "roomnumber": { "bsonType": "int" },
+      "roomstatus": { "bsonType": "string" },
+      "typeName": { "bsonType": "string" }
+    },
+    "required": ["hotelId", "roomId", "roomnumber", "roomstatus", "typeName"],
+    "foreignKeys": {
+      "typeName": { "reference": "RoomType" }
+    }
+  },
+
+  "Review": {
+    "properties": {
+      "_id": { "bsonType": "objectId" },
+      "messages": { "bsonType": "string" },
+      "rating": { "bsonType": "number" },
+      "hotelId": { "bsonType": "objectId" }
+    },
+    "required": ["_id", "messages", "rating", "hotelId"],
+    "foreignKeys": {
+      "hotelId": { "reference": "Hotel" }
+    }
+  },
+
+  "Booking": {
+    "properties": {
+      "userId": { "bsonType": "objectId" },
+      "bookingId": { "bsonType": "objectId" },
+      "bookingStatus": { "bsonType": "string" },
+      "startDate": { "bsonType": "date" },
+      "endDate": { "bsonType": "date" },
+      "creation_Date": { "bsonType": "date" },
+      "roomId": { "bsonType": "objectId" },
+      "hotelId": { "bsonType": "objectId" }
+    },
+    "required": ["userId", "bookingId", "bookingStatus", "startDate", "endDate", "creation_Date", "roomId", "hotelId"],
+    "foreignKeys": {
+      "userId": { "reference": "users" },
+      "roomId": { "reference": "Room" },
+      "hotelId": { "reference": "Hotel" }
+    }
+  },
+
+  "Admin": {
+    "properties": {
+      "userId": { "bsonType": "objectId" },
+      "hotelId": { "bsonType": "objectId" }
+    },
+    "required": ["userId", "hotelId"],
+    "foreignKeys": {
+      "userId": { "reference": "users" },
+      "hotelId": { "reference": "Hotel" }
+    }
+  },
+
+  "loggedin": {
+    "properties": {
+      "_id": { "bsonType": "objectId" },
+      "userId": { "bsonType": "objectId" },
+      "email": { "bsonType": "string" },
+      "logType": { "bsonType": "string", "enum": ["login", "logout"] },
+      "loggedtime": { "bsonType": "date" }
+    },
+    "required": ["_id", "userId", "email", "logType", "loggedtime"],
+    "foreignKeys": {
+      "userId": { "reference": "users" }
+    }
+  }
+}

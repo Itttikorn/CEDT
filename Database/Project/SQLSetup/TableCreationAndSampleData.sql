@@ -2,7 +2,7 @@
 CREATE DATABASE HotelBookingDatabase
 
 --TABLE CREATION
-CREATE TABLE UserName (
+CREATE TABLE users (
     userId SERIAL NOT NULL,
     firstName VARCHAR(255) NOT NULL,
     lastName VARCHAR(255) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE Booking (
     creation_Date TIMESTAMP NOT NULL,
     roomId INTEGER NOT NULL,
     hotelId INTEGER NOT NULL,
-    FOREIGN KEY (userId) REFERENCES UserName (userId),
+    FOREIGN KEY (userId) REFERENCES users (userId),
     FOREIGN KEY (roomId,hotelID) REFERENCES Room(roomId,hotelID),
     PRIMARY KEY (bookingId)
 );
@@ -72,7 +72,7 @@ CREATE TABLE Booking (
 CREATE TABLE Admin (
     userId INTEGER NOT NULL,
     hotelId INTEGER NOT NULL,
-    FOREIGN KEY (userId) REFERENCES UserName(userId),
+    FOREIGN KEY (userId) REFERENCES users(userId),
     FOREIGN KEY (hotelId) REFERENCES Hotel(hotelId)
 );
 
@@ -83,11 +83,11 @@ CREATE TABLE loggedin (
     logType VARCHAR(6),
     loggedtime TIMESTAMP,
     PRIMARY KEY (logId),
-    FOREIGN KEY (userId) REFERENCES UserName(userId)
+    FOREIGN KEY (userId) REFERENCES users(userId)
 );
 
 -- Sample Data
-INSERT INTO UserName (userID, firstName, lastName, email, passcode, telephoneNumber)
+INSERT INTO users (userID, firstName, lastName, email, passcode, telephoneNumber)
 VALUES 
     (DEFAULT, 'John', 'Doe', 'john.doe@example.com', 'password123', '1234567890'),
     (DEFAULT, 'Jane', 'Smith', 'jane.smith@example.com', 'pass123', '9876543210'),

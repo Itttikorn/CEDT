@@ -2,7 +2,7 @@
 CREATE DATABASE HotelBookingDatabase
 
 --TABLE CREATION
-CREATE TABLE UserName (
+CREATE TABLE users (
     userId SERIAL NOT NULL,
     firstName VARCHAR(255) NOT NULL,
     lastName VARCHAR(255) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE Booking (
     creation_Date TIMESTAMP NOT NULL,
     roomId INTEGER NOT NULL,
     hotelId INTEGER NOT NULL,
-    FOREIGN KEY (userId) REFERENCES UserName (userId),
+    FOREIGN KEY (userId) REFERENCES users (userId),
     FOREIGN KEY (roomId,hotelID) REFERENCES Room(roomId,hotelID),
     PRIMARY KEY (bookingId)
 );
@@ -72,7 +72,7 @@ CREATE TABLE Booking (
 CREATE TABLE Admin (
     userId INTEGER NOT NULL,
     hotelId INTEGER NOT NULL,
-    FOREIGN KEY (userId) REFERENCES UserName(userId),
+    FOREIGN KEY (userId) REFERENCES users(userId),
     FOREIGN KEY (hotelId) REFERENCES Hotel(hotelId)
 );
 
@@ -83,11 +83,11 @@ CREATE TABLE loggedin (
     logType VARCHAR(6),
     loggedtime TIMESTAMP,
     PRIMARY KEY (logId),
-    FOREIGN KEY (userId) REFERENCES UserName(userId)
+    FOREIGN KEY (userId) REFERENCES users(userId)
 );
 
 -- Sample Data
-INSERT INTO UserName (userID, firstName, lastName, email, passcode, telephoneNumber)
+INSERT INTO users (userID, firstName, lastName, email, passcode, telephoneNumber)
 VALUES 
     (DEFAULT, 'John', 'Doe', 'john.doe@example.com', 'password123', '1234567890'),
     (DEFAULT, 'Jane', 'Smith', 'jane.smith@example.com', 'pass123', '9876543210'),
@@ -161,16 +161,16 @@ DECLARE
 	checkemail VARCHAR(255);
     rn INTEGER;
 BEGIN
-	SELECT userName.email
+	SELECT users.email
 	INTO checkemail
-	FROM userName
-	WHERE emaill = userName.email;
+	FROM users
+	WHERE emaill = users.email;
 	
     IF FOUND THEN
         RETURN FALSE;
     END IF;
     
-    INSERT INTO UserName VALUES
+    INSERT INTO users VALUES
     (DEFAULT, firstname, lastname, emaill, passcode, telephoneNumber);
 	
 	RETURN TRUE;
@@ -197,7 +197,7 @@ DECLARE
 BEGIN
     SELECT u.passcode, u.userID
     INTO realpasscode,realuserID
-    FROM UserName u
+    FROM users u
     WHERE u.email = emaill;
     
     IF NOT FOUND THEN 
@@ -225,7 +225,7 @@ DECLARE
 BEGIN
     SELECT u.userID
     INTO realuserID
-    FROM UserName u
+    FROM users u
     WHERE u.email = emaill;
     INSERT INTO loggedin VALUES (DEFAULT, realuserID, emaill,'logout', now());
     COMMIT;
@@ -330,7 +330,7 @@ BEGIN
 
 RETURN QUERY
 SELECT DISTINCT B.bookingID, B.bookingStatus, B.startDate, B.endDate, R.typeName, H.name
-FROM Booking B, UserName U, Room R, Hotel H
+FROM Booking B, users U, Room R, Hotel H
 WHERE B.userID = Inuserid and  B.roomID = R.roomID and H.hotelID = B.hotelID;
 
 
@@ -418,7 +418,7 @@ END IF;
 
 RETURN QUERY
 SELECT DISTINCT B.bookingID, U.firstname, U.lastname, B.bookingStatus, B.startDate, B.endDate, R.typeName
-FROM Booking B, UserName U, Room R
+FROM Booking B, users U, Room R
 WHERE B.userID = U.userID and B.hotelID = userhotelID and B.roomID = R.roomID;
 
 

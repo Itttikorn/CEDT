@@ -17,7 +17,7 @@ BEGIN
 
 RETURN QUERY
 SELECT DISTINCT B.bookingID, B.bookingStatus, B.startDate, B.endDate, R.typeName, H.name
-FROM Booking B, UserName U, Room R, Hotel H
+FROM Booking B, users U, Room R, Hotel H
 WHERE B.userID = Inuserid and  B.roomID = R.roomID and H.hotelID = B.hotelID;
 
 

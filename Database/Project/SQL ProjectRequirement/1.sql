@@ -14,16 +14,16 @@ DECLARE
 	checkemail VARCHAR(255);
     rn INTEGER;
 BEGIN
-	SELECT userName.email
+	SELECT users.email
 	INTO checkemail
-	FROM userName
-	WHERE emaill = userName.email;
+	FROM users
+	WHERE emaill = users.email;
 	
     IF FOUND THEN
         RETURN FALSE;
     END IF;
     
-    INSERT INTO UserName VALUES
+    INSERT INTO users VALUES
     (DEFAULT, firstname, lastname, emaill, passcode, telephoneNumber);
 	
 	RETURN TRUE;
