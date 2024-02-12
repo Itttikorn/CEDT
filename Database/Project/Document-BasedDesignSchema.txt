@@ -1,14 +1,24 @@
 {
-  "users": {
+  "User": {
     "properties": {
       "_id": { "bsonType": "objectId" },
       "firstName": { "bsonType": "string" },
       "lastName": { "bsonType": "string" },
       "email": { "bsonType": "string", "unique": true },
       "passcode": { "bsonType": "string" },
-      "telephoneNumber": { "bsonType": "string", "pattern": "/^[0-9]{10}$/" }
+      "telephoneNumber": { "bsonType": "string", "pattern": "/^[0-9]{10}$/" },
+      "isAdmin": { "bsonType": "bool" }
     },
-    "required": ["_id", "firstName", "lastName", "email", "passcode", "telephoneNumber"]
+    "required": ["_id", "firstName", "lastName", "email", "passcode", "telephoneNumber", "isAdmin"]
+  },
+
+"Admin": {
+    "properties": {
+      "_id": { "bsonType": "objectId" },
+      "userId": { "bsonType": "objectId" },
+      "hotelId": { "bsonType": "objectId" }
+    },
+    "required": ["_id", "userId", "hotelId"],
   },
 
   "Hotel": {
@@ -22,77 +32,47 @@
       "subDistrictName": { "bsonType": "string" },
       "districtName": { "bsonType": "string" },
       "province": { "bsonType": "string" },
-      "postalCode": { "bsonType": "string", "pattern": "/^[0-9]{5}$/" }
+      "postalCode": { "bsonType": "string", "pattern": "/^[0-9]{5}$/" },
+      "rooms": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "_id": { "bsonType": "objectId" },
+            "roomNumber": { "bsonType": "int" },
+            "status": { "bsonType": "string" },
+            "type": { "bsonType": "string" }
+          },
+          "required": ["_id", "roomNumber", "status", "type"]
+        }
+      }
     },
     "required": ["_id", "name", "telephoneNumber", "buildingNo", "subDistrictName", "districtName", "province", "postalCode"]
   },
 
   "RoomType": {
     "properties": {
+      "_id": { "bsonType": "objectId" },
       "typeName": { "bsonType": "string" },
       "maxOccupant": { "bsonType": "int" },
       "amenities": { "bsonType": "string" },
       "price": { "bsonType": "int" }
     },
-    "required": ["typeName", "maxOccupant", "amenities", "price"]
-  },
-
-  "Room": {
-    "properties": {
-      "hotelId": { "bsonType": "objectId" },
-      "roomId": { "bsonType": "objectId" },
-      "roomnumber": { "bsonType": "int" },
-      "roomstatus": { "bsonType": "string" },
-      "typeName": { "bsonType": "string" }
-    },
-    "required": ["hotelId", "roomId", "roomnumber", "roomstatus", "typeName"],
-    "foreignKeys": {
-      "typeName": { "reference": "RoomType" }
-    }
-  },
-
-  "Review": {
-    "properties": {
-      "_id": { "bsonType": "objectId" },
-      "messages": { "bsonType": "string" },
-      "rating": { "bsonType": "number" },
-      "hotelId": { "bsonType": "objectId" }
-    },
-    "required": ["_id", "messages", "rating", "hotelId"],
-    "foreignKeys": {
-      "hotelId": { "reference": "Hotel" }
-    }
+    "required": ["_id", "typeName", "maxOccupant", "amenities", "price"]
   },
 
   "Booking": {
     "properties": {
-      "userId": { "bsonType": "objectId" },
-      "bookingId": { "bsonType": "objectId" },
-      "bookingStatus": { "bsonType": "string" },
+      "_id": { "bsonType": "objectId" },
+      "bookingStatus": { "bsonType": "string", "enum": ["pending", "confirmed", "cancelled"] },
       "startDate": { "bsonType": "date" },
       "endDate": { "bsonType": "date" },
       "creation_Date": { "bsonType": "date" },
-      "roomId": { "bsonType": "objectId" },
-      "hotelId": { "bsonType": "objectId" }
+      "user": { "bsonType": "objectId" },
+      "hotel": { "bsonType": "objectId" },
+      "room": { "bsonType": "objectId" }
     },
-    "required": ["userId", "bookingId", "bookingStatus", "startDate", "endDate", "creation_Date", "roomId", "hotelId"],
-    "foreignKeys": {
-      "userId": { "reference": "users" },
-      "roomId": { "reference": "Room" },
-      "hotelId": { "reference": "Hotel" }
-    }
-  },
-
-  "Admin": {
-    "properties": {
-      "userId": { "bsonType": "objectId" },
-      "hotelId": { "bsonType": "objectId" }
-    },
-    "required": ["userId", "hotelId"],
-    "foreignKeys": {
-      "userId": { "reference": "users" },
-      "hotelId": { "reference": "Hotel" }
-    }
+    "required": ["_id", "bookingStatus", "startDate", "endDate", "creation_Date", "user", "hotel", "room"]
   },
 
   "loggedin": {
@@ -101,11 +81,8 @@
       "userId": { "bsonType": "objectId" },
       "email": { "bsonType": "string" },
       "logType": { "bsonType": "string", "enum": ["login", "logout"] },
-      "loggedtime": { "bsonType": "date" }
+      "loggedTime": { "bsonType": "date" }
     },
-    "required": ["_id", "userId", "email", "logType", "loggedtime"],
-    "foreignKeys": {
-      "userId": { "reference": "users" }
-    }
+    "required": ["_id", "userId", "email", "logType", "loggedTime"]
   }
 }
