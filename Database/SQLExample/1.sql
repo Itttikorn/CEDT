@@ -1,0 +1,3 @@
+SELECT *
+FROM FRIEND
+WHERE TYPE = 'Dragon'
