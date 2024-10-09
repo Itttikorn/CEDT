@@ -54,12 +54,13 @@ def Q5(vdo_df):
     '''
     # TODO:  Paste your code here
     category_json = json.load(open('/data/GB_category_id.json'))
-    categories_id = {}
+    category_list = []
     for items in category_json['items']:
-        if(items['snippet']['assignable'] == True):
-            categories_id[items['snippet']['title']] = items['id']
-    sport = vdo_df[vdo_df['category_id'] == int(categories_id['Sports'])].groupby('trending_date')['views'].sum().reset_index(name="sport_views")
-    comedy = vdo_df[vdo_df['category_id'] == int(categories_id['Comedy'])].groupby('trending_date')['views'].sum().reset_index(name="comedy_views")
+        category_list.append((int(items['id']),items['snippet']['title']))
+    category_df = pd.DataFrame(category_list,columns=['id','category'])
+    vdo_df = vdo_df.merge(category_df, left_on='category_id', right_on='id')
+    sport = vdo_df[vdo_df['category'] == 'Sports'].groupby('trending_date')['views'].sum().reset_index(name="sport_views")
+    comedy = vdo_df[vdo_df['category'] == 'Comedy'].groupby('trending_date')['views'].sum().reset_index(name="comedy_views")
     compare = sport.merge(comedy, on='trending_date', how='inner')
     compare['check'] = compare['sport_views'] > compare['comedy_views']
     return compare['check'].sum()
