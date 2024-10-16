@@ -110,6 +110,6 @@ def Q7(df):
     y = df.pop('Survived')
     X = df
 
-    X_train, X_test, y_train, y_test = train_test_split(X,y,stratify=y,test_size=0.3,random_state=12345)
+    X_train, X_test, y_train, y_test = train_test_split(X,y,stratify=y,test_size=0.3,random_state=123)
     return round(y_train.value_counts()[1]/y_train.shape[0],2)
 
