@@ -7,14 +7,14 @@ from sklearn.model_selection import train_test_split
 """
 
 
-def Q1(e):
+def Q1(df):
     """
         Problem 1:
             How many rows are there in the “titanic.csv?
             Hint: In this function, you must load your data into memory before executing any operations. To access titanic.csv, use the path /data/titanic.csv.
     """
     # TODO: Code here
-    df = pd.read_csv('/data/titanic.csv')
+    #df = pd.read_csv('/data/titanic.csv')
     return df.shape[0]
 
 
