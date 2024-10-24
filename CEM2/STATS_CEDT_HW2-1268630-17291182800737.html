@@ -7530,7 +7530,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -7826,7 +7826,7 @@ Hamtaro wants to maximize his profit by cheating using a baised die. Since it is
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#4.1</span>
@@ -7849,7 +7849,7 @@ Hamtaro wants to maximize his profit by cheating using a baised die. Since it is
 <span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">success</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
 <span class="n">p_value</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"p_value is"</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span>
-<span class="k">if</span><span class="p">(</span><span class="n">p_value</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">):</span>
+<span class="k">if</span><span class="p">(</span><span class="n">p_value</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"We can reject the null hypothesis"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"We cannot reject the null hypothesis"</span><span class="p">)</span>
@@ -8258,10 +8258,8 @@ We can reject the null hypothesis
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol>
-<li>Null hypothesis = the product quantity follows N(5000,20^2)
-Alternative hypothesis = the product quantity &gt; 5000 on average</li>
-</ol>
+<p>6.1 Null hypothesis = the product quantity follows N(5000,20^2)</p>
+<p>Alternative hypothesis = the product quantity &gt; 5000 on average</p>
 </div>
 </div>
 </div>
@@ -8270,7 +8268,7 @@ Alternative hypothesis = the product quantity &gt; 5000 on average</li>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
@@ -8313,12 +8311,13 @@ Alternative hypothesis = the product quantity &gt; 5000 on average</li>
        <span class="mf">5026.56246304</span><span class="p">,</span> <span class="mf">5011.02296759</span><span class="p">,</span> <span class="mf">5010.67413795</span><span class="p">,</span> <span class="mf">4990.58062539</span><span class="p">,</span>
        <span class="mf">5009.64435703</span><span class="p">,</span> <span class="mf">5001.9413428</span> <span class="p">])</span>
 
-<span class="c1">#6.2 and 6.3</span>
+<span class="n">all_fac</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">fac_0</span><span class="p">,</span><span class="n">fac_1</span><span class="p">,</span><span class="n">fac_2</span><span class="p">,</span><span class="n">fac_3</span><span class="p">])</span>
+
+<span class="c1">#6.3</span>
 <span class="n">old_mean</span> <span class="o">=</span> <span class="mi">5000</span>
 <span class="n">old_sd</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">factories</span> <span class="o">=</span> <span class="p">[</span><span class="n">fac_0</span><span class="p">,</span><span class="n">fac_1</span><span class="p">,</span><span class="n">fac_2</span><span class="p">,</span><span class="n">fac_3</span><span class="p">]</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">]</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">factory</span> <span class="ow">in</span> <span class="n">factories</span><span class="p">:</span>
     <span class="n">sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">factory</span><span class="p">)</span>
@@ -8327,21 +8326,21 @@ Alternative hypothesis = the product quantity &gt; 5000 on average</li>
     <span class="n">p_value</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"factory"</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
-       <span class="nb">print</span><span class="p">(</span><span class="s2">" We can reject"</span><span class="p">)</span>
-       <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">" We can reject the null hypothesis (factory output increased)"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">" We cannot reject"</span><span class="p">)</span>
-        <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">" We cannot reject the null hypothesis (factory output did not change)"</span><span class="p">)</span>
     <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
-<span class="n">reject</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">cannot_reject</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">result</span> <span class="p">:</span> <span class="n">reject</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span> <span class="n">cannot_reject</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="n">reject</span> <span class="o">&gt;</span> <span class="n">cannot_reject</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"We can reject the null hypothesis as a whole"</span><span class="p">)</span>
+
+<span class="c1">#6.2</span>
+<span class="n">sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">all_fac</span><span class="p">)</span>
+<span class="n">sample_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_fac</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_mean</span> <span class="o">-</span> <span class="n">old_mean</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">old_sd</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sample_size</span><span class="p">))</span>
+<span class="n">p_value</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Overall,"</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">" We can reject the null hypothesis (factory output increased)"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"We cannot reject the null hypothesis as a whole"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">" We cannot reject the null hypothesis (factory output did not change)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8354,11 +8353,11 @@ Alternative hypothesis = the product quantity &gt; 5000 on average</li>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>factory 0 We can reject
-factory 1 We can reject
-factory 2 We can reject
-factory 3 We cannot reject
-We can reject the null hypothesis as a whole
+<pre>factory 0 We can reject the null hypothesis (factory output increased)
+factory 1 We can reject the null hypothesis (factory output increased)
+factory 2 We can reject the null hypothesis (factory output increased)
+factory 3 We cannot reject the null hypothesis (factory output did not change)
+Overall, We can reject the null hypothesis (factory output increased)
 </pre>
 </div>
 </div>
@@ -8369,7 +8368,7 @@ We can reject the null hypothesis as a whole
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#6.4</span>
@@ -8377,34 +8376,35 @@ We can reject the null hypothesis as a whole
 <span class="n">old_sd</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">factories</span> <span class="o">=</span> <span class="p">[</span><span class="n">fac_0</span><span class="p">,</span><span class="n">fac_1</span><span class="p">,</span><span class="n">fac_2</span><span class="p">,</span><span class="n">fac_3</span><span class="p">]</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">]</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">factory</span> <span class="ow">in</span> <span class="n">factories</span><span class="p">:</span>
     <span class="n">sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">factory</span><span class="p">)</span>
     <span class="n">sample_var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">factory</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">sample_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">factory</span><span class="p">)</span>
 
-    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_mean</span> <span class="o">-</span> <span class="n">old_mean</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sample_var</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sample_size</span><span class="p">))</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_mean</span> <span class="o">-</span> <span class="n">old_mean</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sample_var</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sample_size</span><span class="p">))</span>
     <span class="n">dof</span> <span class="o">=</span> <span class="n">sample_size</span><span class="o">-</span><span class="mi">1</span>
 
     <span class="n">p_value</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">dof</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"factory"</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
-       <span class="nb">print</span><span class="p">(</span><span class="s2">" We can reject"</span><span class="p">)</span>
-       <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">" We can reject the null hypothesis (factory output increased)"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">" We cannot reject"</span><span class="p">)</span>
-        <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">" We cannot reject the null hypothesis (factory output did not change)"</span><span class="p">)</span>
     <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
-<span class="n">reject</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">cannot_reject</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">result</span> <span class="p">:</span> <span class="n">reject</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span> <span class="n">cannot_reject</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="n">reject</span> <span class="o">&gt;</span> <span class="n">cannot_reject</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"We can reject the null hypothesis as a whole"</span><span class="p">)</span>
+
+<span class="n">sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">all_fac</span><span class="p">)</span>
+<span class="n">sample_var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">all_fac</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sample_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_fac</span><span class="p">)</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_mean</span> <span class="o">-</span> <span class="n">old_mean</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sample_var</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sample_size</span><span class="p">))</span>
+<span class="n">dof</span> <span class="o">=</span> <span class="n">sample_size</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">p_value</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">dof</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Overall,"</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">" We can reject the null hypothesis (factory output increased)"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"We cannot reject the null hypothesis as a whole"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">" We cannot reject the null hypothesis (factory output did not change)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8417,11 +8417,11 @@ We can reject the null hypothesis as a whole
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>factory 0 We cannot reject
-factory 1 We cannot reject
-factory 2 We cannot reject
-factory 3 We cannot reject
-We cannot reject the null hypothesis as a whole
+<pre>factory 0 We can reject the null hypothesis (factory output increased)
+factory 1 We can reject the null hypothesis (factory output increased)
+factory 2 We can reject the null hypothesis (factory output increased)
+factory 3 We cannot reject the null hypothesis (factory output did not change)
+Overall, We can reject the null hypothesis (factory output increased)
 </pre>
 </div>
 </div>
@@ -8434,8 +8434,7 @@ We cannot reject the null hypothesis as a whole
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Z test did not account for degrees of freedom since we know the sd of the population
-While T test use degrees of freedom and studentized mean for calculation.</p>
+<p>No differences.</p>
 </div>
 </div>
 </div>
