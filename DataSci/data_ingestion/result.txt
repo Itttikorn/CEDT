@@ -1,0 +1,1 @@
+{'timestamp': 1731658674, 'vid': 'V570882', 'txid': 'TX00123', 'checksum': '58845abba0e2a6b6d1d826702520fa28', 'code': 200, 'message': 'Confirm'}
