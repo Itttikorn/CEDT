@@ -1,3 +1,8 @@
 Database/test.js
 Database/test.json
 Database/test.sql
+AIML/Recommendation/books_data.csv
+AIML/Recommendation/Books_rating.csv
+AIML/NeuralNetwork1/dataset/
+*.tar
+*.gz
