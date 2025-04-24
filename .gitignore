@@ -4,5 +4,6 @@ Database/test.sql
 AIML/Recommendation/books_data.csv
 AIML/Recommendation/Books_rating.csv
 AIML/NeuralNetwork1/dataset/
+AIML/Transformer/pytorch-trainer/
 *.tar
 *.gz
