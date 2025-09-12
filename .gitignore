@@ -7,3 +7,7 @@ AIML/NeuralNetwork1/dataset/
 AIML/Transformer/pytorch-trainer/
 *.tar
 *.gz
+SoftwareDefined/Lab5/.terraform/
+SoftwareDefined/Lab5/terraform.tfstate
+SoftwareDefined/Lab5/terraform.tfstate.backup
+SoftwareDefined/Lab5/.terraform.lock.hcl
